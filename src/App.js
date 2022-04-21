@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useEffect, useState } from "react";
+import getGifs from "./services/getGifs";
+import Gif from "./components/gif";
 
 function App() {
+  const [gifs, setGifs] = useState([]);
+
+  useEffect(() => {
+    getGifs().then((gifs) => setGifs(gifs));
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <section>
+        {gifs.map((image) => (
+          <Gif title={image.title} url={image.url} key={image.id} />
+        ))}
+      </section>
     </div>
   );
 }
