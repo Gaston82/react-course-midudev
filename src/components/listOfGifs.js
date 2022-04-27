@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 import getGifs from "../services/getGifs";
 import Gif from "./gif";
 
-export default function ListOfGifs({ keyword }) {
+export default function ListOfGifs() {
+  let { keyword } = useParams();
+
+  // const { keyword } = params;
+
   const [gifs, setGifs] = useState([]);
 
   useEffect(() => {
