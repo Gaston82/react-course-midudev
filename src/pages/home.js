@@ -1,31 +1,24 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ListOfGifs from "../components/listOfGifs";
+import SearchForm from "../components/searchForm";
 import useGifs from "../hooks/useGifs";
 
 const POPULAR_GIFS = ["Rambo", "Gandhi", "Pity", "Fight"];
 
 export default function Home() {
-  const [keyword, setKeyword] = useState("");
   //Averiguar la diferencia con el useLocation
   let navigate = useNavigate();
   const { loading, gifs } = useGifs();
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
+  const handleSubmit = ({ keyword }) => {
+    //navegar a otra ruta
     navigate(`/search/${keyword}`);
-    console.log(keyword);
   };
 
-  const handleChange = (evt) => {
-    setKeyword(evt.target.value);
-  };
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={keyword} onChange={handleChange} />
-        <button>Search</button>
-      </form>
+      <SearchForm pepe={handleSubmit} />
       <h3>Ultima Búsqueda</h3>
       <ListOfGifs gifs={gifs} />
       <h3> Los Gifs más populares</h3>
