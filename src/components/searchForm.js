@@ -1,15 +1,18 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function SearchForm({ pepe }) {
+export default function SearchForm() {
   const [keyword, setKeyword] = useState("");
-
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    pepe({ keyword });
-  };
+  let navigate = useNavigate();
 
   const handleChange = (evt) => {
     setKeyword(evt.target.value);
+    console.log(keyword);
+  };
+
+  const handleSubmit = () => {
+    //navegar a otra ruta
+    navigate(`/search/${keyword}`);
   };
 
   return (
