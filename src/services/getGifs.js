@@ -1,4 +1,4 @@
-const apiKey = "8vG6z2FesxcljPGMEGNRT0hP79exFH21";
+import { API_KEY, API_URL } from "./settings";
 
 const fromApiResponseToGifs = (apiResponse) => {
   const { data = [] } = apiResponse;
@@ -17,7 +17,7 @@ export default function getGifs({
   limit = 25,
   keyword = "keith richard",
 } = {}) {
-  const apiURL = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${keyword}&limit=${limit}&offset=0&rating=g&lang=en`;
+  const apiURL = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=0&rating=g&lang=en`;
   return fetch(apiURL)
     .then((res) => res.json())
     .then(fromApiResponseToGifs);

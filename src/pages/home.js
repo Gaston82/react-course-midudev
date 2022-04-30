@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import ListOfGifs from "../components/listOfGifs";
 import SearchForm from "../components/searchForm";
+import TrendingSerches from "../components/trendingSearches";
 import useGifs from "../hooks/useGifs";
 
 const POPULAR_GIFS = ["Rambo", "Gandhi", "Pity", "Fight"];
@@ -18,13 +19,14 @@ export default function Home() {
       <h3>Ultima Búsqueda</h3>
       <ListOfGifs gifs={gifs} />
       <h3> Los Gifs más populares</h3>
-      <ul>
+      {/* <ul>
         {POPULAR_GIFS.map((popularGif) => (
           <li key={popularGif}>
             <Link to={`/search/${popularGif}`}>Gifs de {popularGif}</Link>
           </li>
         ))}
-      </ul>
+      </ul> */}
+      <TrendingSerches />
     </>
   );
 }
