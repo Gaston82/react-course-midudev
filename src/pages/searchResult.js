@@ -4,8 +4,8 @@ import SearchForm from "../components/searchForm";
 import useGifs from "../hooks/useGifs";
 
 export default function SearchResult({ params }) {
-  const { keyword } = useParams();
-  let { gifs } = useGifs({ keyword });
+  const { keyword, rating = "g" } = useParams();
+  let { gifs, loading } = useGifs({ keyword, rating });
 
   /*
   const [loading, setLoading] = useState(false);
@@ -25,6 +25,7 @@ export default function SearchResult({ params }) {
         <h1>Giffy</h1>
       </header>
       <SearchForm />
+      <h3>{keyword}</h3>
       <ListOfGifs gifs={gifs} />
     </>
   );

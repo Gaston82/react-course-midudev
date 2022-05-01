@@ -14,7 +14,7 @@ function App() {
         <GifsContextProvider>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/search/:keyword" element={<SearchResult />} />
+            <Route path="/search/:keyword/:rating" element={<SearchResult />} />
             <Route path="/gif/:id" element={<Detail />} />
           </Routes>
         </GifsContextProvider>
